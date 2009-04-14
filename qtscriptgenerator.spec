@@ -15,7 +15,7 @@ BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
 BuildRequires:	QtSql-devel
-#BuildRequires:	QtSvg-devel
+BuildRequires:	QtSvg-devel
 #BuildRequires:	QtTest-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXml-devel
@@ -32,7 +32,7 @@ portions of the Qt API from within Qt Script.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0
+%patch0 -p0
 
 %build
 export QTDIR="%{_libdir}/qt4"
