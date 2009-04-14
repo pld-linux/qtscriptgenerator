@@ -6,6 +6,7 @@ License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
 # Source0-md5:	ca4046ad4bda36cd4e21649d4b98886d
+Patch0:		%{name}-qthreadpool.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 # uncomment needed libraries
 #BuildRequires:	Qt3Support-devel
@@ -29,6 +30,7 @@ portions of the Qt API from within Qt Script.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0
 
 %build
 export QTDIR="%{_libdir}/qt4"
