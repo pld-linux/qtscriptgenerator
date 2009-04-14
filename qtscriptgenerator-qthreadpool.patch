@@ -1,0 +1,10 @@
+--- generator/typesystem_core.xml~	2009-02-20 12:42:24.000000000 +0100
++++ generator/typesystem_core.xml	2009-04-14 21:43:44.994628199 +0200
+@@ -2092,6 +2092,7 @@
+     <extra-includes>
+         <include file-name="qtconcurrentreducekernel.h" location="global"/>
+         <include file-name="qtconcurrentthreadengine.h" location="global"/>
++	 <include file-name="QtCore/QThreadPool" location="global"/>
+     </extra-includes>
+   </namespace-type>
+   
