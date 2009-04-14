@@ -14,8 +14,10 @@ BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
+BuildRequires:	QtSql-devel
 #BuildRequires:	QtSvg-devel
 #BuildRequires:	QtTest-devel
+BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXml-devel
 # require ">= 4.3.3-3" if some tool is invoked by *-qt4 name
 BuildRequires:	qt4-build >= 4.3.3-3
