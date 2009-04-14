@@ -11,7 +11,7 @@ URL:		http://code.google.com/p/qtscriptgenerator/
 #BuildRequires:	Qt3Support-devel
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
-#BuildRequires:	QtNetwork-devel
+BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
 #BuildRequires:	QtSvg-devel
 #BuildRequires:	QtTest-devel
