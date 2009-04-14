@@ -31,11 +31,12 @@ portions of the Qt API from within Qt Script.
 %setup -q -n %{name}-src-%{version}
 
 %build
-export QTDIR="%{_usr}"
+export QTDIR="%{_libdir}/qt4"
+export INCLUDE="%{_includedir}/qt4"
 cd generator
 qmake-qt4
 %{__make}
-./generator -include-path=%{_usr}/include
+./generator
 cd ../qtbindings
 qmake-qt4
 %{__make}
