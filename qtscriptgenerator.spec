@@ -1,10 +1,13 @@
 #
+# TODO:
+# Build without no_phonon.patch (fix qt4.spec)
+#
 %define		qt_ver	4.5.0
 
 Summary:	QtScript Qt Bindings
 Name:		qtscriptgenerator
 Version:	0.1.0
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
@@ -14,16 +17,16 @@ Patch1:		%{name}-no_phonon.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
-BuildRequires:	QtOpenGL-devel
-BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	QtNetwork-devel
+BuildRequires:	QtOpenGL-devel
 BuildRequires:	QtScript-devel
 BuildRequires:	QtScriptTools-devel
 BuildRequires:	QtSql-devel
-BuildRequires:	QtUiTools-devel
 BuildRequires:	QtSvg-devel
+BuildRequires:	QtUiTools-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXml-devel
+BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	qt4-build >= 4.3.3-3
 BuildRequires:	qt4-qmake >= 4.3.3-3
 BuildRequires:	rpmbuild(macros) >= 1.129
