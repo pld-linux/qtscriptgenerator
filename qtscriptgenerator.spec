@@ -13,6 +13,7 @@ BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
+BuildRequires:	QtScriptTools-devel
 BuildRequires:	QtSql-devel
 BuildRequires:	QtSvg-devel
 BuildRequires:	QtWebKit-devel
