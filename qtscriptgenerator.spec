@@ -36,7 +36,6 @@ Script.
 %package -n qtscriptbindings
 Summary:	Qt bindings for Qt Script
 Group:		Libraries
-Requires:	qt4 >= %{qt_ver}
 
 %description -n qtscriptbindings
 Binndings providing access to substantial portions of the Qt API from
