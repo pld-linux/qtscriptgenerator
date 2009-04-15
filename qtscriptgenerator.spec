@@ -49,18 +49,14 @@ within Qt Script.
 %build
 export QTDIR="%{_libdir}/qt4"
 export INCLUDE="%{_includedir}/qt4"
-cd generator
-qmake-qt4
-%{__make}
-./generator
 
-cd ../qtbindings
-qmake-qt4
-%{__make}
-
-cd ../tools/qsexec/src
-qmake-qt4
-%{__make}
+for dir in generator qtbindings tools/qsexec/src; do
+	cd $dir
+	qmake-qt4
+	%{__make}
+	test "$dir" == "generator" && ./generator
+	cd -
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
