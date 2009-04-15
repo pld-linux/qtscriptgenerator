@@ -54,18 +54,27 @@ qmake-qt4
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT%{_bindir}
-# usually you have to install the program manually
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_qtdir}/plugins/script/}
+
+# install doesn't do symlinks
+cp -a plugins/script/libqtscript* \
+  $RPM_BUILD_ROOT%{_qtdir}/plugins/script/
+
+install tools/qsexec/README.TXT README.qsexec
+install tools/qsexec/qsexec $RPM_BUILD_ROOT%{_bindir}/qsexec
+
+install generator/generator $RPM_BUILD_ROOT%{_qtdir}/plugins/generator
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#%{_bindir}/generator
+%{_qtdir}/plugins/generator
 
 %files -n qtscriptbindings
 %defattr(644,root,root,755)
 %doc README README.qsexec doc/ examples/
 %attr(755,root,root) %{_bindir}/qsexec
-#%{_libdir}/script/libqtscript*
+%{_qtdir}/plugins/script/libqtscript*
