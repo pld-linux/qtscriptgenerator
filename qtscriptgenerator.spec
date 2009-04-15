@@ -1,3 +1,6 @@
+#
+%define		qt_ver	4.5.0
+
 Summary:	QtScript Qt Bindings
 Name:		qtscriptgenerator
 Version:	0.1.0
@@ -11,10 +14,13 @@ Patch1:		%{name}-no_phonon.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
+BuildRequires:	QtOpenGL-devel
+BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
 BuildRequires:	QtScriptTools-devel
 BuildRequires:	QtSql-devel
+BuildRequires:	QtUiTools-devel
 BuildRequires:	QtSvg-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXml-devel
@@ -48,7 +54,12 @@ cd generator
 qmake-qt4
 %{__make}
 ./generator
+
 cd ../qtbindings
+qmake-qt4
+%{__make}
+
+cd ../tools/qsexec/src
 qmake-qt4
 %{__make}
 
@@ -62,9 +73,7 @@ cp -a plugins/script/libqtscript* \
 
 install tools/qsexec/README.TXT README.qsexec
 install tools/qsexec/qsexec $RPM_BUILD_ROOT%{_bindir}/qsexec
-
 install generator/generator $RPM_BUILD_ROOT%{_libdir}/qt4/bin/generator
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
