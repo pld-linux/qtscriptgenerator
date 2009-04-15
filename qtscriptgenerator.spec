@@ -7,19 +7,16 @@ Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
 # Source0-md5:	ca4046ad4bda36cd4e21649d4b98886d
 Patch0:		%{name}-qthreadpool.patch
+Patch1:		%{name}-no_phonon.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
-# uncomment needed libraries
-#BuildRequires:	Qt3Support-devel
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtScript-devel
 BuildRequires:	QtSql-devel
 BuildRequires:	QtSvg-devel
-#BuildRequires:	QtTest-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXml-devel
-# require ">= 4.3.3-3" if some tool is invoked by *-qt4 name
 BuildRequires:	qt4-build >= 4.3.3-3
 BuildRequires:	qt4-qmake >= 4.3.3-3
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -27,12 +24,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Qt Script Generator is a tool that generates Qt bindings for Qt
-Script. With the generated bindings you get access to substantial
-portions of the Qt API from within Qt Script.
+Script.
+
+%package -n qtscriptbindings
+Summary:	Qt bindings for Qt Script
+Group:		Libraries
+Requires:	qt4 >= %{qt_ver}
+
+%description -n qtscriptbindings
+Binndings providing access to substantial portions of the Qt API from
+within Qt Script.
 
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
+%patch1 -p1
 
 %build
 export QTDIR="%{_libdir}/qt4"
@@ -55,3 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+#%{_bindir}/generator
+
+%files -n qtscriptbindings
+%defattr(644,root,root,755)
+%doc README README.qsexec doc/ examples/
+%attr(755,root,root) %{_bindir}/qsexec
+#%{_libdir}/script/libqtscript*
