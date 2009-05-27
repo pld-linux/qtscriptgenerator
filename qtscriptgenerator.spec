@@ -7,13 +7,14 @@
 Summary:	QtScript Qt Bindings
 Name:		qtscriptgenerator
 Version:	0.1.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
 # Source0-md5:	ca4046ad4bda36cd4e21649d4b98886d
 Patch0:		%{name}-qthreadpool.patch
 Patch1:		%{name}-no_phonon.patch
+Patch2:		%{name}-include.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -48,6 +49,7 @@ within Qt Script.
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 export QTDIR="%{_libdir}/qt4"
