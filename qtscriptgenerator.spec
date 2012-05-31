@@ -6,15 +6,14 @@
 
 Summary:	QtScript Qt Bindings
 Name:		qtscriptgenerator
-Version:	0.1.0
-Release:	2
+Version:	0.2.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
-# Source0-md5:	ca4046ad4bda36cd4e21649d4b98886d
+# Source0-md5:	9f82b0aa212f7938de37df46cd27165c
 Patch0:		%{name}-qthreadpool.patch
 Patch1:		%{name}-no_phonon.patch
-Patch2:		%{name}-include.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -49,7 +48,6 @@ within Qt Script.
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
 %patch1 -p1
-%patch2 -p1
 
 %build
 export QTDIR="%{_libdir}/qt4"
@@ -58,7 +56,11 @@ export INCLUDE="%{_includedir}/qt4"
 for dir in generator qtbindings tools/qsexec/src; do
 	cd $dir
 	qmake-qt4
-	%{__make}
+	%{__make}   \
+        CXX="%{__cxx}" \
+        CXXFLAGS="%{rpmcxxflags} -fPIC"\
+        CFLAGS="%{rpmcflags}"
+
 	test "$dir" == "generator" && ./generator
 	cd -
 done
