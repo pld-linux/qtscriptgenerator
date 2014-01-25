@@ -1,0 +1,11 @@
+--- a/generator/reporthandler.cpp
++++ b/generator/reporthandler.cpp
+@@ -57,7 +57,7 @@ void ReportHandler::warning(const QStrin
+     if (db && db->isSuppressedWarning(warningText)) {
+         ++m_suppressed_count;
+     } else if (!m_reported_warnings.contains(warningText)) {
+-        qDebug(qPrintable(warningText));
++        qDebug() << warningText;
+         ++m_warning_count;
+ 
+         m_reported_warnings.insert(warningText);

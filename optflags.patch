@@ -1,0 +1,12 @@
+--- qtscriptgenerator-src-0.2.0/generator/generator.pri~	2012-01-23 12:30:03.000000000 +0100
++++ qtscriptgenerator-src-0.2.0/generator/generator.pri	2014-01-25 11:21:38.203799933 +0100
+@@ -60,6 +60,9 @@
+    
+ QT = core xml
+ 
++QMAKE_CXXFLAGS += $(OPTCXXFLAGS)
++QMAKE_CFLAGS += $(OPTCFLAGS)
++
+ win32-msvc.net {
+         QMAKE_CXXFLAGS += /Zm500
+         QMAKE_CXXFLAGS -= -Zm200

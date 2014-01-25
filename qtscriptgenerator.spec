@@ -14,6 +14,9 @@ Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.ta
 # Source0-md5:	9f82b0aa212f7938de37df46cd27165c
 Patch0:		%{name}-qthreadpool.patch
 Patch1:		%{name}-no_phonon.patch
+Patch2:		format-security.patch
+Patch3:		memory-alignment-fix.patch
+Patch4:		optflags.patch
 URL:		http://code.google.com/p/qtscriptgenerator/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -48,6 +51,9 @@ within Qt Script.
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export QTDIR="%{_libdir}/qt4"
@@ -56,10 +62,10 @@ export INCLUDE="%{_includedir}/qt4"
 for dir in generator qtbindings tools/qsexec/src; do
 	cd $dir
 	qmake-qt4
-	%{__make}   \
-        CXX="%{__cxx}" \
-        CXXFLAGS="%{rpmcxxflags} -fPIC"\
-        CFLAGS="%{rpmcflags}"
+	%{__make} \
+		CXX="%{__cxx}" \
+		OPTCXXFLAGS="%{rpmcxxflags} -fPIC" \
+		OPTCFLAGS="%{rpmcflags} -fPIC"
 
 	test "$dir" == "generator" && ./generator
 	cd -
