@@ -7,7 +7,7 @@
 Summary:	QtScript Qt Bindings
 Name:		qtscriptgenerator
 Version:	0.2.0
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qtscriptgenerator.googlecode.com/files/%{name}-src-%{version}.tar.gz
