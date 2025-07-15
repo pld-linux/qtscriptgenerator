@@ -49,11 +49,11 @@ within Qt Script.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P0 -p0
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
 
 %build
 export QTDIR="%{_libdir}/qt4"
